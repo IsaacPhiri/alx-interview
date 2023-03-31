@@ -1,1 +1,7 @@
 # 0x01-lockboxes
+- `0-lockboxes.py`
+#### The code is designed to determine if all boxes can be opened by checking if there exists a path between the first box and every other box in the list. To do this, we first initialize a variable "n" to the length of the boxes list, representing the total number of boxes. We then create a Boolean list "visited" of length "n" and set all elements to False. This list will keep track of which boxes we have visited so far.
+
+#### Next, we mark the first box (boxes[0]) as visited by setting visited[0] to True. We create a stack and push the index of the first box (0) onto the stack. We then start a loop that runs as long as the stack is not empty. In each iteration, we pop the top element (box) from the stack and iterate over the keys in the current box (boxes[box]). For each key, we check if we have already visited the corresponding box. If we haven't, we mark it as visited by setting visited[key] to True and push its index onto the stack. We repeat this process until we have visited all the boxes that are reachable from the current box.
+
+#### Finally, after visiting all the boxes, if all elements of the visited list are True, we return True, indicating that all boxes can be opened. Otherwise, we return False, indicating that there exists at least one box that cannot be opened. By following this process, we can determine if all boxes in the list can be opened by checking for the existence of a path between the first box and every other box.
