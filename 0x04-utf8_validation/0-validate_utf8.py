@@ -14,32 +14,19 @@ def validUTF8(data):
     Returns:
         bool: True if data is a valid UTF-8 encoding, else False
     """
-
-    # Iterate over each byte in the data
-    i = 0
-    while i < len(data):
-        # Check for ASCII character
-        if data[i] < 128:
-            i += 1
-            continue
-        # Check for two-byte sequence
-        elif 194 <= data[i] <= 223:
-            if i + 1 >= len(data) or not 128 <= data[i+1] <= 191:
+    byte_count = 0
+    for byte in data:
+        if byte_count == 0:
+            if (byte >> 5) == 0b110:
+                byte_count = 1
+            elif (byte >> 4) == 0b1110:
+                byte_count = 2
+            elif (byte >> 3) == 0b11110:
+                byte_count = 3
+            elif (byte >> 7):
                 return False
-            i += 2
-        # Check for three-byte sequence
-        elif 224 <= data[i] <= 239:
-            if i + 2 >= len(data) or not \
-                    all(128 <= x <= 191 for x in data[i+1:i+3]):
-                return False
-            i += 3
-        # Check for four-byte sequence
-        elif 240 <= data[i] <= 244:
-            if i + 3 >= len(data) or not \
-                    all(128 <= x <= 191 for x in data[i+1:i+4]):
-                return False
-            i += 4
-        # Invalid byte
         else:
-            return False
-    return True
+            if (byte >> 6) != 0b10:
+                return False
+            byte_count -= 1
+    return byte_count == 0
