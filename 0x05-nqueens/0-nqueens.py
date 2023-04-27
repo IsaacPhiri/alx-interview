@@ -95,9 +95,12 @@ def get_solutions():
     """Gets the solutions for the given chessboard size.
     """
     global POSSIBLE_POSITIONS, BOARD_SIZE
-    POSSIBLE_POSITIONS = list(map(lambda x: [x // BOARD_SIZE, x % BOARD_SIZE], range(BOARD_SIZE ** 2)))
+    POSSIBLE_POSITIONS = list(
+                            map(lambda x: [x // BOARD_SIZE, x % BOARD_SIZE],
+                                range(BOARD_SIZE ** 2))
+                            )
     a = 0
-    group = []    
+    group = []
     build_solution(a, group)
 
 
