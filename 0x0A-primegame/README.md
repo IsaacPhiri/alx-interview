@@ -30,8 +30,9 @@ The algorithm used in the `isWinner` function follows these steps:
 2. Clone the repository and navigate to the project's root directory.
 
 3. Open a terminal and execute the following command to run the program:
-	```chmod +x prime_game.py
-	   ./0-main.py
+	```
+	root@USER$ chmod +x prime_game.py
+	root@USER$ ./0-main.py
 	```
 4. Modify the `x` and `nums` variables in the `prime_game.py` file to customize the number of rounds and the list of numbers for each round.
 
