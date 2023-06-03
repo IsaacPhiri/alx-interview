@@ -1,29 +1,39 @@
 #!/usr/bin/python3
-"""Module for x num game"""
+"""
+Prime Game
+"""
 
 
 def isWinner(x, nums):
-    def is_prime(n):
-        if n < 2:
-            return False
-        for i in range(2, int(n ** 0.5) + 1):
-            if n % i == 0:
-                return False
-        return True
+    """Is winner"""
+    prime_cache = [False, False] + [True] * (max(nums) - 1)
 
-    wins_maria = 0
-    wins_ben = 0
+    # Generate a cache of prime numbers up to the maximum number in nums
+    for i in range(2, int(max(nums) ** 0.5) + 1):
+        if prime_cache[i]:
+            for j in range(i * i, max(nums) + 1, i):
+                prime_cache[j] = False
 
+    # Helper function to check if a number is prime
+    def is_prime(num):
+        return prime_cache[num]
+
+    # Count the number of rounds won by Maria and Ben
+    maria_wins = 0
+    ben_wins = 0
+
+    # Play x rounds of the game
     for n in nums:
-        prime_count = sum(1 for i in range(1, n + 1) if is_prime(i))
+        prime_count = sum(1 for i in range(2, n + 1) if is_prime(i))
         if prime_count % 2 == 0:
-            wins_ben += 1
+            ben_wins += 1
         else:
-            wins_maria += 1
+            maria_wins += 1
 
-    if wins_maria > wins_ben:
+    # Determine the winner based on the number of rounds won
+    if maria_wins > ben_wins:
         return "Maria"
-    elif wins_ben > wins_maria:
+    elif ben_wins > maria_wins:
         return "Ben"
     else:
         return None
