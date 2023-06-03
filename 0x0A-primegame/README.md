@@ -28,6 +28,10 @@ The algorithm used in the `isWinner` function follows these steps:
 1. Ensure that you have Python 3.4.3 installed on your system.
 
 2. Clone the repository and navigate to the project's root directory.
+	```
+	root@USER$ git clone https://github.com/IsaacPhiri/alx-interview.git
+	root@USER$ cd alx-interview/0x0A-primegame
+	```
 
 3. Open a terminal and execute the following command to run the program:
 	```
