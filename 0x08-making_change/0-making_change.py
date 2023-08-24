@@ -15,9 +15,7 @@ def makeChange(coins, total):
     rem = total
     coins_count = 0
     coin_idx = 0
-    
     sorted_coins = sorted(coins, reverse=True)
-
     n = len(coins)
     while rem > 0:
         if coin_idx >= n:
