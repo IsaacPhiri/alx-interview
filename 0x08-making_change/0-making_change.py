@@ -4,7 +4,6 @@ Making Change module
 """
 
 
-
 def makeChange(coins, total):
     """
     Given a pile of coins of different values, determine the fewest number of
