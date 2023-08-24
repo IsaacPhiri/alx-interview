@@ -5,12 +5,13 @@ Making Change module
 
 
 def makeChange(coins, total):
+    """
+    Given a pile of coins of different values, determine the fewest number of
+    coins needed to meet a given amount total.
+    """
     if total <= 0:
         return 0
 
-
-    # Initialize a list to store the minimum number of coins
-    # needed for each amount
     dp = [float('inf')] * (total + 1)
     dp[0] = 0  # Base case
 
